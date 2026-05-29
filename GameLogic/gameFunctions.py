@@ -1,0 +1,3 @@
+
+
+def scrambleTerms() -> list[str]:
