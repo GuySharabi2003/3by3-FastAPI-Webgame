@@ -1,5 +1,6 @@
 
-
+const LobbyCreationScreen = document.getElementById('LobbyCreationScreen');
+const LobbyScreen = document.getElementById('LobbyScreen');
 const startBtn = document.getElementById('startBtn');
 const responseText = document.getElementById('responseText');
 const playerNameInput = document.getElementById('playernameInput');
@@ -22,8 +23,10 @@ startBtn.addEventListener('click', async () => {
         });
         const data = await response.json();
         
-
-        responseText.innerText = data.message;
+        //Switch to lobby screen upon successful response
+        LobbyCreationScreen.classList.add('inactive');
+        LobbyScreen.classList.remove('inactive');
+        
     } catch (error) {
         responseText.innerText = "Error connecting to backend.";
         console.error(error);

@@ -9,6 +9,21 @@ body {
     padding: 20px;
 }
 
+.inactive {
+    display:none
+}
+
+.vbox {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;              
+    width: 300px;
+    height: 500px;
+    border: 2px solid black;
+}
+
+
+
 h1 {
     color: Black;
     text-align: center;
@@ -20,6 +35,13 @@ h2 {
     color: Black;
     text-align: center;
     font-family: "Days One", "Roboto", sans-serif;
+}
+
+h3 {
+    color: Black;
+    text-align: center;
+    font-family: "Days One", "Roboto", sans-serif;
+    font-size: 20px;
 }
 
 #startBtn {
@@ -39,4 +61,42 @@ h2 {
 
 #startBtn:active {
     background-color: rgb(40, 158, 197);
+}
+
+#startGameBtn {
+    background-color: Green;
+    border: 2px solid black;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    font-family: "Days One", "Roboto", sans-serif;
+    margin-top: 20px;
+}
+
+#startGameBtn:hover {
+    background-color: DarkGreen;
+}
+
+#startGameBtn:active {
+    background-color: rgb(40, 197, 61);
+}
+
+#copyInviteBtn {
+    background-color: purple;
+    border: 2px solid black;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    font-family: "Days One", "Roboto", sans-serif;
+    margin-top: 20px;
+}
+
+#copyInviteBtn:hover {
+    background-color: rgb(43, 1, 43);
+}
+
+#copyInviteBtn:active {
+    background-color: violet;
 }
