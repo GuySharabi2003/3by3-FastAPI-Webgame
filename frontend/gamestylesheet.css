@@ -2,19 +2,41 @@
 
 
 body {
-
     font-family: "Days One", "Roboto", sans-serif;
+    background-color: #D9D9D9;
     text-align: center;
-    background-color: lightblue;
     margin: 0;
     padding: 20px;
 }
 
-#pingBtn {
+h1 {
+    color: Black;
+    text-align: center;
+    font-family: "Days One", "Roboto", sans-serif;
+
+}
+
+h2 {
+    color: Black;
+    text-align: center;
+    font-family: "Days One", "Roboto", sans-serif;
+}
+
+#startBtn {
     background-color: Blue;
     border: 2px solid black;
     padding: 10px 20px;
     font-size: 16px;
     color: white;
     cursor: pointer;
+    font-family: "Days One", "Roboto", sans-serif;
+    margin-top: 20px;
+}
+
+#startBtn:hover {
+    background-color: Darkblue;
+}
+
+#startBtn:active {
+    background-color: rgb(40, 158, 197);
 }
