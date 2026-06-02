@@ -1,5 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from GameLogic import gameFunctions
 import GameLogic.gameHub as gameHub
 import GameLogic.player as player
 
@@ -14,24 +18,33 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-currentGameHub = gameHub.gameHub()
-
-@app.get("/")
-def read_root():
-    return {"message": "Hello, World! Your FastAPI is working!"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str = None):
-    return {"item_id": item_id, "query_param": q}
+existingLobbyIDs = set()
+existingGameHubs = {}
 
 
 @app.post("/add_player/{player_name}")
-def add_player(player_name: str):
+def add_player(player_name: str, lobby_id: int):
     new_player = player.Player(player_name)
-    currentGameHub.players.append(new_player)
+    existingGameHubs[lobby_id].addPlayer(new_player)
 
 @app.post("/start_game/{player_name}")
 def start_game(player_name: str):
-    add_player(player_name)
-    return {"message": f"Player {player_name} added and game started!"}
+   lobbyID = gameFunctions.generateLobbyID()
+
+   while lobbyID in existingLobbyIDs: # Make sure ID is unique
+       lobbyID = gameFunctions.generateLobbyID()
+
+   currentGameHub = gameHub.gameHub(players=[player.Player(player_name)], category="", lobbyID=lobbyID)
+   existingLobbyIDs.add(lobbyID)
+   existingGameHubs[lobbyID] = currentGameHub
+   return {"lobbyURL": f"/lobby/{lobbyID}"}
+
+@app.get("/lobby/{lobby_id}")
+def get_lobby(lobby_id: int):
+    return FileResponse("frontend/index.html")
+
+@app.get("/getPlayers/{lobby_id}")
+def get_players(lobby_id: int):
+    return {"players": existingGameHubs[lobby_id].getPlayerNames()}
+
+app.mount("/", StaticFiles(directory="frontend", html=True), name="static")

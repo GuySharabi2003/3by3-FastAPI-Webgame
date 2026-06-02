@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My FastAPI Game Frontend</title>
-    <link rel="stylesheet" href="gamestylesheet.css">
+    <title>The 3-By-3 game</title>
+    <link rel="stylesheet" href="/gamestylesheet.css">
 </head>
 <body>
     <h1>The 3x3 Game</h1>
@@ -21,19 +21,46 @@
 
     <div id="LobbyScreen" class="inactive">
 
+        <div class="hbox">
         <button id="copyInviteBtn">Copy Invite Link</button>
         <button id="startGameBtn">Start Game </button>
-        <div id ="PlayerList" class="vbox">
-            <h3> Players:</h3>
-
         </div>
 
+        <div id="gameInfoBox" class="hbox">
 
+            <div id ="playerListBox">
+                <h3> Players:</h3>
+                <ol id="playerList"></ol>
+            </div>
+            <div id="categorySelectBox" class="vbox">
+                <label for="categorySelect">Select Game Category:</label>
+                <select id = "categorySelect">Category <!-- Dropbox for category selection -->
+                    <option value="Foods">Foods</option>
+                    <option value="Travel destinations">Travel destinations</option>
+                    <option value="Movies">Movies</option>
+                    <option value="TV shows">TV shows</option>
+                    <option value="Games">Games</option>
+                    <option value="Things Done this year">Done this year</option>
+                    <option value="Anime">Anime</option>
+                    <option value="Books">Books</option>
+                    <option value="Manga">Manga</option>
+                    <option value="Albums">Albums</option>
+                    <option value="Songs">Songs</option>
+                    <option value="Artists">Artists</option>
+                    <option value="Youtubers">Youtubers</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <div id="otherCategoryInputBox" class="inactive">
+                <label for="otherCategoryInput">Other Category:</label>
+                <input type="text" id="otherCategoryInput" name="otherCategory"> </div> <!--Input Box for "Other" category -->
+                </div>
+            </div>
+
+        </div>
     </div>
 
 
-
-
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>

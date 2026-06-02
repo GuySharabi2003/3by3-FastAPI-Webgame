@@ -13,16 +13,41 @@ body {
     display:none
 }
 
+#playerListBox {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 300px;
+    gap: 15px;              
+    border: 2px solid black;
+    margin-top: 5px;
+    padding: 2px;
+    background-color: white;
+
+}
+
+#playerList {
+    font-size: 15px;
+    text-align: left;
+}
+
+.hbox {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;              
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .vbox {
     display: flex;
     flex-direction: column;
     gap: 15px;              
-    width: 300px;
-    height: 500px;
-    border: 2px solid black;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
-
-
 
 h1 {
     color: Black;
@@ -41,7 +66,7 @@ h3 {
     color: Black;
     text-align: center;
     font-family: "Days One", "Roboto", sans-serif;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 #startBtn {
@@ -100,3 +125,12 @@ h3 {
 #copyInviteBtn:active {
     background-color: violet;
 }
+
+#categorySelect {
+    padding: 10px;
+    font-size: 16px;
+    font-family: "Arial", sans-serif;
+    height: 40px;
+    width: 200px;
+}
+
