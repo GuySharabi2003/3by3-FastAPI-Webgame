@@ -1,7 +1,7 @@
 
 class Player:
     """
-    A Class representing a player in the 3*3 game.
+    A Class representing a player in the 3by3 game.
         Attributes:
             name (str): The name of the player
             points (int): The amount of points the player has

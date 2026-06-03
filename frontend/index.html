@@ -10,16 +10,16 @@
     <h1>The 3x3 Game</h1>
     <h2>By Guy Sharabi</h2>
 
-    <div id="LobbyCreationScreen">
+    <div id="lobbyCreationScreen">
             <div>
-            <label for="playernameInput">Input Player Name:</label>
-            <input type="text" id="playernameInput" name="playername">
+            <label for="playerNameInput">Input Player Name:</label>
+            <input type="text" id="playerNameInput" name="playerName">
             </div>
             <button id="startBtn">Create Game Lobby</button>
             <p id="responseText"></p>
     </div>
 
-    <div id="LobbyScreen" class="inactive">
+    <div id="lobbyScreen" class="inactive">
 
         <div class="hbox">
         <button id="copyInviteBtn">Copy Invite Link</button>
@@ -60,7 +60,16 @@
         </div>
     </div>
 
+    <div id="lobbyJoinScreen" class="inactive">
 
-    <script src="/script.js"></script>
+        <label for="newPlayerNameInput">Input Player Name:</label>
+        <input type="text" id="newPlayerNameInput" name="newPlayerName">
+        <button id="joinGameBtn">Join Game Lobby</button>
+        <p id="joinResponseText"></p>
+
+    </div>
+
+
+    <script src="/script.js" defer></script>
 </body>
 </html>
