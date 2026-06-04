@@ -12,8 +12,9 @@ class Player:
     name: str
     points: int
     terms: list[str]
+    isHost: bool
 
-    def __init__(self, name: str, points: int, terms: list[str]):
+    def __init__(self, name: str, points: int, terms: list[str], isHost: bool = False):
         """
         General Constructor for the Player Class
         Args:
@@ -24,6 +25,7 @@ class Player:
         self.name = name
         self.points = points
         self.terms = terms
+        self.isHost = isHost
 
     def __init__(self, name: str):
         """
@@ -36,7 +38,8 @@ class Player:
         self.name = name
         self.points = 0
         self.terms = []
-
+        self.isHost = False
+        
     def getName(self):
         """Returns the name of the player"""
         return self.name

@@ -11,6 +11,12 @@ const joinGameBtn = document.getElementById('joinGameBtn');
 const newPlayerNameInput = document.getElementById('newPlayerNameInput');
 const lobbyJoinScreen = document.getElementById('lobbyJoinScreen');
 const joinResponseText = document.getElementById('joinResponseText');
+const copyInviteBtn = document.getElementById('copyInviteBtn');
+const startGameBtn = document.getElementById('startGameBtn');
+const CategorySelectLabel = document.getElementById('categorySelectLabel');
+
+
+const isHost = false;
 
 const BACKEND_URL = "http://127.0.0.1:8000";
 
@@ -24,6 +30,9 @@ startBtn.addEventListener('click', async () => {
             responseText.innerText = "Please enter a player name.";
             return;
         }
+
+        localStorage.setItem("isHost", true); // set user as lobby host
+
         
         // Post request to backend to create lobby and gamehub
         const response = await fetch(`${BACKEND_URL}/start_game/${encodeURIComponent(playerName)}`, {
@@ -60,6 +69,13 @@ async function initializeLobby() {
         lobbyScreen.classList.remove('inactive');
         console.log("Lobby initialized successfully. Current URL:", currentURL);
 
+        if (localStorage.getItem("isHost") === "false") { // disable start button and category selection for non-host
+            startGameBtn.classList.add('inactive');
+            categorySelect.classList.add('inactive');
+            CategorySelectLabel.classList.add('inactive');
+        }
+
+
         
         const playersResponse = await fetch(`${BACKEND_URL}/getPlayers/${encodeURIComponent(lobby_id)}`, {
             method: "GET"
@@ -88,6 +104,9 @@ joinGameBtn.addEventListener('click', async () => {
         joinResponseText.innerText = "Please enter a player name.";
         return;
     }
+
+    localStorage.setItem("isHost", false); // set user as non-host player
+
     const currentURL = window.location.pathname;
     const lobby_id = currentURL.split("/").pop();
     const response = await fetch(`${BACKEND_URL}/add_player/${encodeURIComponent(lobby_id)}/${encodeURIComponent(playerName)}`, {
@@ -111,6 +130,15 @@ categorySelect.addEventListener('change', () => {
         otherCategoryInputBox.classList.add('inactive');
     }
 });
+
+
+copyInviteBtn.addEventListener('click', () => { // Copy lobby invite link to clipboard
+    const currentURL = window.location.pathname;
+    const lobby_id = currentURL.split("/").pop();
+
+    navigator.clipboard.writeText(BACKEND_URL + "/join_lobby/" + lobby_id);
+});
+
 
 
 initializeLobby();

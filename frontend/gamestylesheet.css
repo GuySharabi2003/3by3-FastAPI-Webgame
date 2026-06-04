@@ -134,3 +134,21 @@ h3 {
     width: 200px;
 }
 
+#joinGameBtn {
+    background-color: Blue;
+    border: 2px solid black;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    font-family: "Days One", "Roboto", sans-serif;
+    margin-top: 20px;
+}
+
+#joinGameBtn:hover {
+    background-color: Darkblue;
+}
+
+#joinGameBtn:active {
+    background-color: rgb(40, 158, 197);
+}
